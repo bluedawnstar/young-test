@@ -10,6 +10,12 @@
 ///////////////////////////////////////////////////////////////////////////////
 //  Macros & Constants
 
+#define YTEST_ASSERT(expression)    \
+        do {                        \
+            if(!(expression))       \
+                std::cerr << "-- Assertion failed: " << #expression << ", " << __FILE__ << ", " << __LINE__ << std::endl; \
+        } while (0)
+
 #define _YTEST_CAT_(a,b)            a ## b
 #define _YTEST_CAT(a,b)             _YTEST_CAT_(a,b)
 
