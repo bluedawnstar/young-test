@@ -10,15 +10,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 //  Macros & Constants
 
-// for main()
-#define YTEST_BEGIN                 int main(int argc, char* argv[]) {          \
-                                        for (int i = 1; i < argc; i++)          \
-                                            ytest::TestFramework::instance().addFilters(argv[i], ',');
-#define YTEST_CASE(name, fn)            ytest::TestFramework::instance().add(name, fn);
-#define YTEST_END                       ytest::TestFramework::instance().run(); \
-                                        return 0;                               \
-                                    }
-
 #define _YTEST_CAT_(a,b)            a ## b
 #define _YTEST_CAT(a,b)             _YTEST_CAT_(a,b)
 
@@ -45,23 +36,27 @@ public:
         for (i = 0; i < (int)names.length(); i++) {
             if (names[i] == delimiter) {
                 if (j < i)
-                    filters.insert(names.substr(j, i - j));
+                    addFilter(names.substr(j, i - j));
                 j = i + 1;
             }
         }
         if (j < i)
-            filters.insert(names.substr(j, i - j));
+            addFilter(names.substr(j, i - j));
     }
 
     void addFilter(const std::string& name) {
-        if (!name.empty())
-            filters.insert(name);
+        if (!name.empty()) {
+            if (name.back() != '*')
+                filters.insert(name);
+            else
+                prefixFilters.push_back(name.substr(0, name.length() - 1));
+        }
     }
 
     void run() const {
         int ok = 0, failed = 0;
         for (auto& it : testCases) {
-            if (filters.empty() || filters.find(it.first) != filters.end()) {
+            if (canRun(it.first)) {
                 if (it.second()) {
                     std::cout << "[" << it.first << "] " << "OK" << std::endl;
                     ok++;
@@ -72,7 +67,7 @@ public:
             }
         }
 
-        std::cout << "TOTAL: " << (ok + failed) << ", SUCCESS: " << ok << ", FAILED: " << failed << std::endl;
+        std::cout << std::endl << "TOTAL: " << (ok + failed) << ", SUCCESS: " << ok << ", FAILED: " << failed << std::endl;
     }
 
 private:
@@ -84,9 +79,29 @@ private:
     TestFramework& operator =(const TestFramework& rhs) = delete;
     TestFramework& operator =(TestFramework&& rhs) = delete;
 
+    bool canRun(const std::string& name) const {
+        if (filters.empty() && prefixFilters.empty())
+            return true;
+
+        if (!filters.empty()) {
+            if (filters.find(name) != filters.end())
+                return true;
+        }
+        if (!prefixFilters.empty()) {
+            for (auto& s : prefixFilters) {
+                auto len = s.length();
+                if (len <= name.length() && name.compare(0, len, s, 0, len) == 0)
+                    return true;
+            }
+        }
+
+        return false;
+    }
+
 private:
     std::vector<std::pair<std::string, std::function<bool()>>> testCases;
     std::unordered_set<std::string> filters;
+    std::vector<std::string> prefixFilters;
 };
 
 struct TestCaseAdder {

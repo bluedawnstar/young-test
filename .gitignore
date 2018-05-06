@@ -34,6 +34,8 @@
 .vs/
 *.db
 *.opendb
+*.user
+*.TMP
 
 Debug/
 Release/
