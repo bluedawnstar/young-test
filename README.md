@@ -8,7 +8,7 @@ Youngman's very simple test-framework
  - Step2: add the test functions and function objects you want to call as shown below.
     ```
     // lambda function
-    YTEST_ADD_CASE("A", []() {      // The name of this test case is "A"
+    YTEST_CASE("A", []() {          // The name of this test case is "A"
         cout << "TEST A" << endl;
         return true;                // no error
     });
@@ -21,7 +21,7 @@ Youngman's very simple test-framework
         return true;                // no error
     }
 
-    YTEST_ADD_CASE("B", testB);     // The name of this test case is "B"
+    YTEST_CASE("B", testB);         // The name of this test case is "B"
     ```
 
     ```
@@ -33,14 +33,14 @@ Youngman's very simple test-framework
         }
     };
 
-    YTEST_ADD_CASE("C", TestC());   // The name of this test case is "C"
+    YTEST_CASE("C", TestC());       // The name of this test case is "C"
     ```
 
  - Step3: add ```./src/ytest.cpp``` to your test projects
 
- - Step4: compile
+ - Step4: compile!
 
- - Step5: run tests
+ - Step5: run test cases
     - run all test cases
       ```
 	  # <your-executable-file>

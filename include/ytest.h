@@ -13,7 +13,7 @@
 #define _YTEST_CAT_(a,b)            a ## b
 #define _YTEST_CAT(a,b)             _YTEST_CAT_(a,b)
 
-#define YTEST_ADD_CASE(name, fn)    ytest::TestCaseAdder _YTEST_CAT(__adder_, __LINE__)(name, fn)
+#define YTEST_CASE(name, fn)        ytest::TestCaseAdder _YTEST_CAT(__adder_, __LINE__)(name, fn)
 
 namespace ytest {
 

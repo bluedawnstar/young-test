@@ -7,17 +7,17 @@ using namespace std;
 
 // lambda functions
 
-YTEST_ADD_CASE("A", []() {
+YTEST_CASE("A", []() {
     cout << "TEST A" << endl;
     return true;
 });
 
-YTEST_ADD_CASE("AA", []() {
+YTEST_CASE("AA", []() {
     cout << "TEST AA" << endl;
     return true;
 });
 
-YTEST_ADD_CASE("AB", []() {
+YTEST_CASE("AB", []() {
     cout << "TEST AB" << endl;
     return true;
 });
@@ -30,7 +30,7 @@ bool testB() {
     return true;
 }
 
-YTEST_ADD_CASE("B", testB);
+YTEST_CASE("B", testB);
 
 
 // Function objects
@@ -42,4 +42,4 @@ struct TestC {
     }
 };
 
-YTEST_ADD_CASE("C", TestC());
+YTEST_CASE("C", TestC());
