@@ -36,7 +36,7 @@ Youngman's very simple test-framework
     YTEST_ADD_CASE("C", TestC());   // The name of this test case is "C"
     ```
 
- - Step3: add "ytest.cpp" to your test projects
+ - Step3: add ```./src/ytest.cpp``` to your test projects
 
  - Step4: compile
 
@@ -62,4 +62,8 @@ Youngman's very simple test-framework
     - run specific test cases: all test cases to begin with "A" and a test case "C"
     ```
 	# <your-executable-file> A*,C
+	```
+	or
+    ```
+	# <your-executable-file> A* C
 	```
