@@ -328,9 +328,7 @@ inline std::ostream& printComparedValues(std::ostream& os, const T& val1, const 
 } // namespace ytest
 
 
-/*
-TODO: assertion and return result!
-*/
+// macro to create test cases
 #define YTEST_F(__tester, __caseName)                                   \
     class __tester##__caseName : public __tester {                      \
     public:                                                             \
@@ -349,6 +347,10 @@ TODO: assertion and return result!
                                                                         \
     YTEST_CASE2(#__tester, #__caseName, __tester##__caseName());        \
     void __tester##__caseName::__testBody()
+
+
+///////////////////////////////////////////////////////////////////////////////
+//  Assertion Macros
 
 #define YEXPECT_TRUE(expr)                                              \
     do {                                                                \
