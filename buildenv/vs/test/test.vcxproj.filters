@@ -13,19 +13,25 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="소스 파일\src">
+      <UniqueIdentifier>{77916ad0-3391-46a0-8631-b11dd546ab2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\test">
+      <UniqueIdentifier>{2208de1d-768b-4ec6-8915-ac93997c4cc8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\test\test_global.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="test_suite_1.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\ytest.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\src</Filter>
     </ClCompile>
-    <ClCompile Include="test_suite_2.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="..\..\..\test\test_global.cpp">
+      <Filter>소스 파일\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\test\test_suite_1.cpp">
+      <Filter>소스 파일\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\test\test_suite_2.cpp">
+      <Filter>소스 파일\test</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
