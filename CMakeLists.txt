@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 
-project (young-math)
+project (young-test)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
@@ -14,7 +14,8 @@ set(CMAKE_CXX_FLAGS "-O2 -lstdc++")
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
 aux_source_directory(src YTEST)
+aux_source_directory(test TEST_CASES)
 
-add_executable(test test/test.cpp ${YTEST})
+add_executable(test ${TEST_CASES} ${YTEST})
 
 set(CMAKE_VERBOSE_MAKEFILE false)
