@@ -152,8 +152,8 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\src\ytest.cpp" />
     <ClCompile Include="..\..\..\test\test_global.cpp" />
-    <ClCompile Include="test_suite_1.cpp" />
-    <ClCompile Include="test_suite_2.cpp" />
+    <ClCompile Include="..\..\..\test\test_suite_1.cpp" />
+    <ClCompile Include="..\..\..\test\test_suite_2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\ytest.h" />
